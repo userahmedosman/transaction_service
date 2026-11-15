@@ -1,0 +1,55 @@
+[package]
+name = "transaction-service"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+# Web framework
+axum = { version = "0.7", features = ["macros"] }
+tokio = { version = "1", features = ["full"] }
+tower = { version = "0.4", features = ["util"] }
+tower-http = { version = "0.5", features = ["cors", "trace"] }
+
+# Database
+sqlx = { version = "0.7", features = ["runtime-tokio-rustls", "postgres", "uuid", "chrono", "json"] }
+
+# Serialization
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+
+# UUID
+uuid = { version = "1.6", features = ["serde", "v4"] }
+
+# Time
+chrono = { version = "0.4", features = ["serde"] }
+
+# Error handling
+anyhow = "1.0"
+thiserror = "1.0"
+
+# Enhanced Telemetry Dependencies
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter", "json"] }
+tracing-opentelemetry = "0.22"
+opentelemetry = { version = "0.21", features = ["trace", "metrics"] }
+opentelemetry_sdk = { version = "0.21", features = ["rt-tokio", "trace", "metrics"] }
+opentelemetry-otlp = { version = "0.14", features = ["trace", "metrics", "grpc-tonic"] }
+opentelemetry-semantic-conventions = "0.13"
+
+# Environment variables
+dotenvy = "0.15"
+
+# Validation
+validator = { version = "0.18", features = ["derive"] }
+
+# Password hashing
+argon2 = "0.5"
+
+# Rate limiting
+governor = "0.6"
+
+# Webhook handling
+reqwest = { version = "0.11", features = ["json"] }
+
+[dev-dependencies]
+tower-test = "0.4"
